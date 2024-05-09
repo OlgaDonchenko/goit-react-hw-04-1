@@ -3,7 +3,7 @@ import { searchImages } from "../../searcherImages-api";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import SearchBar from "../SearchBar/SearchBar";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import Loader from "../Loader/Loader.jsx";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import ImageModal from "../ImageModal/ImageModal";
@@ -17,10 +17,13 @@ export default function App() {
   const [query, setQuery] = useState("");
 
   const [modal, setModal] = useState(false);
-  const [imgUrl, setImgsUrl] = useState([]);
-
+  const [imageUrl, setImageUrl] = useState(null);
   const openModal = (url) => {
-    setImgsUrl(url);
+    if (images.length === 0) {
+      toast.error("Please load images first!");
+      return;
+    }
+    setImageUrl(url);
     toggle();
   };
 
@@ -73,7 +76,7 @@ export default function App() {
       <Toaster />
       {modal && (
         <ImageModal
-          image={imgUrl}
+          imageUrl={imageUrl}
           imgModal={modal}
           item={images}
           onModalClose={toggle}

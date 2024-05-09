@@ -1,15 +1,17 @@
 import ReactModal from "react-modal";
-
-export default function ImageModal({ imageUrl, closeModal }) {
+ReactModal.setAppElement("#root");
+export default function ImageModal({ imageUrl, imgModal, onModalClose }) {
   return (
     <ReactModal
-      isOpen={!!imageUrl}
-      onRequestClose={closeModal}
+      isOpen={imgModal}
+      onRequestClose={onModalClose}
       contentLabel="Image Modal"
+      overlayClassName="overlay"
+      className="modal-content"
     >
       <div>
         <img src={imageUrl} alt="Large" />
-        <button onClick={closeModal}>Close</button>{" "}
+        <button onClick={onModalClose}>Close</button>{" "}
       </div>
     </ReactModal>
   );
