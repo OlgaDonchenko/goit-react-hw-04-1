@@ -1,10 +1,11 @@
 import { Formik, Form, Field } from "formik";
 import { IoIosSearch } from "react-icons/io";
 import { toast } from "react-hot-toast";
+import css from "./SearchBar.module.css";
 
 export default function SearchBar({ onSubmit }) {
   return (
-    <header>
+    <header className={css.box}>
       <Formik
         initialValues={{ query: "" }}
         onSubmit={(values, actions) => {
@@ -19,7 +20,7 @@ export default function SearchBar({ onSubmit }) {
           actions.resetForm();
         }}
       >
-        <Form>
+        <Form className={css.form}>
           <Field
             type="text"
             name="query"
@@ -27,7 +28,7 @@ export default function SearchBar({ onSubmit }) {
             autoFocus
             placeholder="Search images and photos"
           />
-          <button type="submit">
+          <button className={css.btn} type="submit">
             <IoIosSearch />
           </button>
         </Form>

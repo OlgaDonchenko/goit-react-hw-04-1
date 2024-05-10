@@ -1,0 +1,11 @@
+.btn {
+  display: flex;
+  background-color: azure;
+  margin: 0 auto;
+  padding: 8px;
+}
+.box {
+  padding: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

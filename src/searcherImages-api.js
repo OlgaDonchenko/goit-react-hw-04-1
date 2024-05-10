@@ -6,7 +6,7 @@ axios.defaults.baseURL = "https://api.unsplash.com";
 export const searchImages = async (query, page) => {
   const response = await axios.get("/search/photos", {
     params: {
-      orientation: "landscape",
+      orientation: "portrait",
       per_page: 12,
       page: page,
       query: query,
